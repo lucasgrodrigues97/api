@@ -29,6 +29,11 @@ class MovieRepository implements IMovieRepository {
         return movie[0] as Movie;
     }
 
+    async deleteById(id: string, user_id: string): Promise<void> {
+
+        await knex('movies').delete().where({id, user_id});
+    }
+
     async findById(id: string): Promise<Movie|undefined> {
 
         return await knex('movies').where('id', id).first();

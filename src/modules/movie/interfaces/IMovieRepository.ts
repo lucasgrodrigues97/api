@@ -4,6 +4,7 @@ import { Movie } from "../entities/Movie";
 export interface IMovieRepository {
     create(user: MovieDTO): Promise<Movie>;
     edit(id: string, user: MovieDTO): Promise<Movie>;
+    deleteById(id: string, user_id: string): Promise<void>;
     findById(id: string): Promise<Movie|undefined>;
     findByName(email: string): Promise<Movie|undefined>;
     getAll(user_id: string): Promise<Movie[]>;

@@ -49,6 +49,23 @@ class MovieController {
         return reply.status(201).send(movie);
     }
 
+    async delete(request: FastifyRequest, reply: FastifyReply) {
+
+        const getMovieParamsSchema = z.object({
+            id: z.string().uuid(),
+        });
+
+        const { id } = getMovieParamsSchema.parse(request.params);
+
+        const { id: user_id } = request.user;
+
+        const movieService = new MovieService(new MovieRepository);
+
+        await movieService.delete(id, user_id);
+
+        return reply.status(201).send('Successfully deleted');
+    }
+
     async getAll(request: FastifyRequest) {
 
         const movieRepository = new MovieRepository();

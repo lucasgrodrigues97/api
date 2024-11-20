@@ -13,5 +13,5 @@ export async function moviesRouter(app: FastifyInstance) {
 
   app.put('/:id', { preHandler: [app.authenticate] }, movieController.edit);
 
-  app.delete('/:id', { preHandler: [app.authenticate] }, () => {});
+  app.delete('/:id', { preHandler: [app.authenticate] }, movieController.delete);
 }

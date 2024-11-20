@@ -29,6 +29,18 @@ class MovieService {
 
         return await this.movieRepository.edit(id, { user_id, name, description, director});
     }
+
+    async delete(id: string, user_id: string): Promise<void> {
+
+        const movie = await this.movieRepository.findById(id);
+
+        if (!movie) {
+
+            throw new Error('Movie not exists');
+        }
+
+        await this.movieRepository.deleteById(id, user_id);
+    }
 }
 
 export default MovieService;
