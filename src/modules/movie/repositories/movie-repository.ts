@@ -19,6 +19,21 @@ class MovieRepository implements IMovieRepository {
         return movie[0] as Movie;
     }
 
+    async edit(id: string, { user_id, name, description, director }: MovieDTO): Promise<Movie> {
+
+        const movie = await knex('movies')
+            .update({user_id, name, description, director})
+            .where({id})
+            .returning(['id', 'name', 'description', 'director']);
+
+        return movie[0] as Movie;
+    }
+
+    async findById(id: string): Promise<Movie|undefined> {
+
+        return await knex('movies').where('id', id).first();
+    }
+
     async findByName(name: string): Promise<Movie|undefined> {
 
         return await knex('movies').where('name', name).first();

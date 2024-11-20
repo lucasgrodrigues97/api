@@ -24,6 +24,31 @@ class MovieController {
         return reply.status(201).send(movie);
     }
 
+    async edit(request: FastifyRequest, reply: FastifyReply) {
+
+        const createMovieSchema = z.object({
+            name: z.string(),
+            description: z.string(),
+            director: z.string(),
+        });
+
+        const { name, description, director } = createMovieSchema.parse(request.body);
+
+        const getMovieParamsSchema = z.object({
+            id: z.string().uuid(),
+        });
+
+        const { id } = getMovieParamsSchema.parse(request.params);
+
+        const movieService = new MovieService(new MovieRepository);
+
+        const { id: user_id } = request.user;
+
+        const movie = await movieService.edit(id, { user_id, name, description, director });
+
+        return reply.status(201).send(movie);
+    }
+
     async getAll(request: FastifyRequest) {
 
         const movieRepository = new MovieRepository();

@@ -12,10 +12,22 @@ class MovieService {
 
         if (checkMovie) {
 
-            throw new Error('Movie already existis');
+            throw new Error('Movie already exists');
         }
 
         return await this.movieRepository.create({ user_id, name, description, director});
+    }
+
+    async edit(id: string, { user_id, name, description, director }: MovieDTO): Promise<Movie> {
+
+        const movie = await this.movieRepository.findById(id);
+
+        if (!movie) {
+
+            throw new Error('Movie not exists');
+        }
+
+        return await this.movieRepository.edit(id, { user_id, name, description, director});
     }
 }
 
