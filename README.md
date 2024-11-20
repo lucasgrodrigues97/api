@@ -1,30 +1,4 @@
-# Tarefa: Implementar Endpoints de Edição e Deleção de Livro
-
-## Objetivo
-
-A tarefa consiste em implementar dois endpoints em uma API para gerenciar livros:
-
-- **PUT /livros/:id**: Editar um livro específico.
-- **DELETE /livros/:id**: Deletar um livro específico.
-
-Além disso, é necessário escrever **testes** para ambos os endpoints, garantindo que as funcionalidades estão funcionando corretamente.
-
-## Requisitos
-
-1. **Endpoint PUT /livros/:id**: 
-    - O endpoint deve permitir a edição de um livro existente.
-    - O corpo da requisição deve conter os dados atualizados do livro (exemplo: título, autor, genrer).
-    - Se o livro não for encontrado, retorne uma resposta adequada (ex: `404 Not Found`).
-    - O usuário só poderá editar livros adicionados por ele.
-
-2. **Endpoint DELETE /livros/:id**:
-    - O endpoint deve permitir a exclusão de um livro existente.
-    - Se o livro não for encontrado, retorne uma resposta adequada (ex: `404 Not Found`).
-    - Após a exclusão, retorne uma resposta de sucesso (ex: `200 OK` ou `204 No Content`).
-    - O usuário só poderá deletar livros adicionados por ele.
-
-3. **Testes**:
-    - Implemente testes automatizados para garantir que os endpoints `PUT` e `DELETE` funcionam corretamente.
+# Tarefa: Trabalho Final: Desenvolvimento de API REST com Node.js
 
 ## Instruções
 
@@ -33,7 +7,7 @@ Além disso, é necessário escrever **testes** para ambos os endpoints, garanti
 Primeiro, clone o repositório do projeto:
 
 ```bash
-git clone https://github.com/lucasgrodrigues97/puc-api.git
+git clone https://github.com/lucasgrodrigues97/api.git
 cd puc-api
 ```
 ### 2. Instalar as Dependências
@@ -58,6 +32,7 @@ Antes de rodar o comando para criar as migrations, é importante criar os arquiv
 NODE_ENV=development
 DATABASE_URL='./db/db.sqlite'
 DATABASE_CLIENT=sqlite
+SECRET_KEY='A8213JIALA18923K'
 ```
 
 Usando **npm**:
