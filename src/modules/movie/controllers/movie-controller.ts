@@ -47,7 +47,7 @@ class MovieController {
 
         const { id } = getMovieParamsSchema.parse(request.params);
 
-        const movie = movieRepository.getById(id, user_id);
+        const movie = await movieRepository.getById(id, user_id);
 
         return { movie };
     }
