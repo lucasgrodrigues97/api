@@ -61,5 +61,40 @@ yarn dev
 ```
 O servidor estará rodando em http://localhost:3000 (ou outra porta configurada no projeto). Agora você pode acessar e testar a API no seu navegador ou usar ferramentas como Postman, Insomnia ou HTTpie.
 
+### 5. Rotas da API
 
+**Método POST** Parâmetros no corpo da requisição: {"name": "Example Name", "email": "example@gmail.com", "password": "12345678"}
+```bash
+http://localhost:3000/users/register
+```
 
+**Método POST** Parâmetros no corpo da requisição: {"email": "example@gmail.com", "password": "12345678"}
+**Será retornado um "accessToken" que deverá ser enviado no Header no momento de consumir todas as rotas de "movies"**
+```bash
+http://localhost:3000/authenticate
+```
+
+**Método GET**
+```bash
+http://localhost:3000/movies
+```
+
+**Método GET** Parâmetro na url da requisição será o id do filme que deseja buscar. Substitua ":id" pelo id do modelo.
+```bash
+http://localhost:3000/movies/:id
+```
+
+**Método POST** Parâmetros no corpo da requisição: {"name": "Example Movie", "description": "Example Description", "director": "Example Director"}
+```bash
+http://localhost:3000/movies
+```
+
+**Método PUT** Parâmetro na url da requisição será o id do filme que deseja atualizar. Substitua ":id" pelo id do modelo.
+```bash
+http://localhost:3000/movies/:id
+```
+
+**Método DELETE** Parâmetro na url da requisição será o id do filme que deseja deletar. Substitua ":id" pelo id do modelo.
+```bash
+http://localhost:3000/movies/:id
+```
